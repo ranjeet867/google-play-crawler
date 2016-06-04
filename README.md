@@ -2,7 +2,7 @@
 # Welcome to the google-play-crawler!
 Python based Google Play Crawler to crawl all the app related data. 
 
-##Crawl data Glimpse: 
+##Glimpse of crawl data: 
 
 App name:  Amazon Shopping
 Installs Range:   50,000,000 - 100,000,000 
