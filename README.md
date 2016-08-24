@@ -46,7 +46,7 @@ Try anyone of these methods. I personally prefer pip.
 ## Usage:
 Directly run the script crawl_play_store.py to print app data. By default it will crawl Flipkart and Amazon upto 20 reviews.
 
-To crawl your apps just add app url in this array:
+To scrap data just add app url in this array in python file:
 urls = ["https://play.google.com/store/apps/details?id=com.flipkart.android&hl=en", 
 		"https://play.google.com/store/apps/details?id=com.amazon.mShop.android.shopping"]
 
