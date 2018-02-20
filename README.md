@@ -2,7 +2,7 @@
 # Welcome to the google-play-crawler!
 Python based Google Play Crawler 
 
-##Example of crawled data:
+## Example of crawled data:
 
 App name:  Amazon Shopping <br>
 Installs Range:   50,000,000 - 100,000,000
@@ -27,7 +27,7 @@ Review Title:  Alright<br>
 Review Body:   Alright The app itself is great. This is my first user on Amazon after being a longtime user of Ebay. Just not too happy with delivery as promised. I ordered 2 instock items directly from Amazon on may 30th, says will ship today (june 2) and have it by the 6th..has yet to be shipped. Funny thing is the next day the 31st I ordered 2 items from a 3rd party on Amazon and they shipped yesterday. Sneaky part tho offering 30 days free of Prime, have to give credit card. I did, mine is expired so they cancelled free trial  Full Review <br> 
 Developer Reply:  <br>
 
-##Requirements
+## Requirements
 
 1. Python 3.4.4
 2. beautifulsoup4
