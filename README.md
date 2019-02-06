@@ -4,27 +4,27 @@ Python based Google Play Crawler
 
 ## Example of crawled data:
 
-App name:  Flipkart Online Shopping App
-Installs Range:  100,000,000+
-Rating Value:  4.455704689025879
-Reviews Count:  7689096
-Rating:  5
-Rating count:  5,003,740
-Rating:  4
-Rating count:  1,836,612
-Rating:  3
-Rating count:  465,871
-Rating:  2
-Rating count:  114,706
-Rating:  1
-Rating count:  268,167
-
-review：1
-Author Name: 
-Review Date:
-Reviewer Ratings:
-Review Body: 
-Developer Reply:  
+App name:  Flipkart Online Shopping App<br>
+Installs Range:  100,000,000+<br>
+Rating Value:  4.455704689025879<br>
+Reviews Count:  7689096<br>
+Rating:  5<br>
+Rating count:  5,003,740<br>
+Rating:  4<br>
+Rating count:  1,836,612<br>
+Rating:  3<br>
+Rating count:  465,871<br>
+Rating:  2<br>
+Rating count:  114,706<br>
+Rating:  1<br>
+Rating count:  268,167<br>
+<br>
+review：1<br>
+Author Name: <br>
+Review Date:<br>
+Reviewer Ratings:<br>
+Review Body: <br>
+Developer Reply: <br> 
 
 
 ## Requirements
