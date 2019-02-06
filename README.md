@@ -4,28 +4,28 @@ Python based Google Play Crawler
 
 ## Example of crawled data:
 
-App name:  Amazon Shopping <br>
-Installs Range:   50,000,000 - 100,000,000
-Rating Value:  4.268221378326416<br>
-Rating Count:  449554<br>
-Reviews Count:  449,554<br>
-Rating:   5 <br>
-Rating count:  281,323<br>
-Rating:   4 <br>
-Rating count:  86,924<br>
-Rating:   3 <br>
-Rating count:  34,203<br>
-Rating:   2 <br>
-Rating count:  14,772<br>
-Rating:   1 <br>
-Rating count:  32,332<br>
-Author Name:  michelle slaughter<br>
-Review Date:  2 June 2016<br>
-Reviewer Link:  /store/apps/details?id=com.amazon.mShop.android.shopping&reviewId=Z3A6QU9xcFRPSEdKRjFBeEJjVFNZMHdfLUptRnprTkhnOGpacWhaSzhUb1NOa29Ca3lYeEtxZi1PeXZZUXVtdVlieExuaG1wbmtSRF83emZLeE1iRXg3dVE<br>
-Reviewer Ratings:  3<br>
-Review Title:  Alright<br>
-Review Body:   Alright The app itself is great. This is my first user on Amazon after being a longtime user of Ebay. Just not too happy with delivery as promised. I ordered 2 instock items directly from Amazon on may 30th, says will ship today (june 2) and have it by the 6th..has yet to be shipped. Funny thing is the next day the 31st I ordered 2 items from a 3rd party on Amazon and they shipped yesterday. Sneaky part tho offering 30 days free of Prime, have to give credit card. I did, mine is expired so they cancelled free trial  Full Review <br> 
-Developer Reply:  <br>
+App name:  Flipkart Online Shopping App
+Installs Range:  100,000,000+
+Rating Value:  4.455704689025879
+Reviews Count:  7689096
+Rating:  5
+Rating count:  5,003,740
+Rating:  4
+Rating count:  1,836,612
+Rating:  3
+Rating count:  465,871
+Rating:  2
+Rating count:  114,706
+Rating:  1
+Rating count:  268,167
+
+review：1
+Author Name: 
+Review Date:
+Reviewer Ratings:
+Review Body: 
+Developer Reply:  
+
 
 ## Requirements
 
