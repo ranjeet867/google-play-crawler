@@ -1,3 +1,8 @@
+
+# coding: utf-8
+
+# In[2]:
+
 import time
 from bs4 import BeautifulSoup
 import sys, io
@@ -11,27 +16,27 @@ from selenium.webdriver.common.proxy import *
 no_of_reviews = 1000
 
 non_bmp_map = dict.fromkeys(range(0x10000, sys.maxunicode + 1), 0xfffd)
-driver = webdriver.Firefox(executable_path='/usr/local/bin/geckodriver')
+driver = webdriver.Chrome(r"C:\Users\user\Anaconda3\Scripts\chromedriver.exe")
 
 wait = WebDriverWait( driver, 10 )
 
 
 # Append your app store urls here
-urls = ["https://play.google.com/store/apps/details?id=com.flipkart.android&hl=en",
-        "https://play.google.com/store/apps/details?id=com.amazon.mShop.android.shopping"]
+urls = ["https://play.google.com/store/apps/details?id=com.flipkart.android&hl=en"]
 
 for url in urls:
 
     driver.get(url)
+
     page = driver.page_source
 
     soup_expatistan = BeautifulSoup(page, "html.parser")
 
-    expatistan_table = soup_expatistan.find("div", class_="id-app-title")
+    expatistan_table = soup_expatistan.find("h1", class_="AHFaub")
 
     print("App name: ", expatistan_table.string)
 
-    expatistan_table = soup_expatistan.find("div", itemprop="numDownloads")
+    expatistan_table = soup_expatistan.findAll("span", class_="htlgb")[4]
 
     print("Installs Range: ", expatistan_table.string)
 
@@ -39,50 +44,56 @@ for url in urls:
 
     print("Rating Value: ", expatistan_table['content'])
 
-    expatistan_table = soup_expatistan.find("meta", itemprop="ratingCount")
+    expatistan_table = soup_expatistan.find("meta", itemprop="reviewCount")
 
-    print("Rating Count: ", expatistan_table['content'])
+    print("Reviews Count: ", expatistan_table['content'])
 
-    expatistan_table = soup_expatistan.find("span", class_="reviews-num")
+    soup_histogram = soup_expatistan.find("div", class_="VEF2C")
 
-    print("Reviews Count: ", expatistan_table.string)
-
-    soup_histogram = soup_expatistan.find("div", class_="rating-histogram")
-
-    rating_bars = soup_histogram.find_all('div', class_="rating-bar-container")
+    rating_bars = soup_histogram.find_all('div', class_="mMF0fd")
 
     for rating_bar in rating_bars:
         print("Rating: ", rating_bar.find("span").text)
-        print("Rating count: ", rating_bar.find("span", class_="bar-number").string)
+        print("Rating count: ", rating_bar.find("span", class_="L2o20d").get('title'))
 
-    next_button = driver.find_element_by_xpath('//*[@id="body-content"]/div/div/div[1]/div[2]/div[2]/div[1]/div[4]/button[2]')
+    # open all reviews
+    url = url+'&showAllReviews=true'
+    driver.get(url)
+    time.sleep(5) # wait dom ready
+    for i in range(1,10):
+        driver.execute_script('window.scrollTo(0, document.body.scrollHeight);')#scroll to load other reviews
+        time.sleep(1)
+    page = driver.page_source
 
-    for i in range(0,no_of_reviews):
-        try:
-            next_button.click()
-        except Exception:
-         time.sleep(5)
-
-    reviews_div = driver.find_element_by_xpath('//div[@data-load-more-section-id="reviews"]').get_attribute("innerHTML")
-    soup_expatistan = BeautifulSoup(reviews_div, "html.parser")
-
-    expand_pages = soup_expatistan.find_all("div", class_="single-review")
-
+    soup_expatistan = BeautifulSoup(page, "html.parser")
+    expand_pages = soup_expatistan.findAll("div", class_="d15Mdf")
+    counter = 1
     for expand_page in expand_pages:
-        print("Author Name: ", str(expand_page.find("span", class_="author-name").string.encode("utf-8")))
-        print("Review Date: ", expand_page.find("span", class_="review-date").string.encode("utf-8"))
-        print("Reviewer Link: ", expand_page.find("a", class_="reviews-permalink")['href'])
-        reviewer_ratings = expand_page.find("div", class_="review-info-star-rating").find_next()['aria-label'];
-        reviewer_ratings = ''.join(x for x in reviewer_ratings if x.isdigit())
-        print("Reviewer Ratings: ", reviewer_ratings)
-        print("Review Title: ", str(expand_page.find("span", class_="review-title").string))
-        print("Review Body: ", str(expand_page.find("div", class_="review-body").text.encode("utf-8")))
-        developer_reply = expand_page.find_parent().find("div", class_="developer-reply")
-        if hasattr(developer_reply, "text"):
-            print("Developer Reply: ", str(developer_reply.text.encode("utf-8")))
-        else:
-            print("Developer Reply: ", "")
-
-
+        try:
+            print("\n===========\n")
+            print("review："+str(counter))
+            print("Author Name: ", str(expand_page.find("span", class_="X43Kjb").text))
+            print("Review Date: ", expand_page.find("span", class_="p2TkOb").text)
+            '''
+            //didn't find reviewer link
+            print("Reviewer Link: ", expand_page.find("a", class_="reviews-permalink")['href'])
+            '''
+            reviewer_ratings = expand_page.find("div", class_="pf5lIe").find_next()['aria-label'];
+            reviewer_ratings = reviewer_ratings.split('(')[0]
+            reviewer_ratings = ''.join(x for x in reviewer_ratings if x.isdigit())
+            print("Reviewer Ratings: ", reviewer_ratings)
+            '''
+            //didn't find review title
+            print("Review Title: ", str(expand_page.find("span", class_="review-title").string))
+            '''
+            print("Review Body: ", str(expand_page.find("div", class_="UD7Dzf").text))
+            developer_reply = expand_page.find_parent().find("div", class_="LVQB0b")
+            if hasattr(developer_reply, "text"):
+                print("Developer Reply: "+"\n", str(developer_reply.text))
+            else:
+                print("Developer Reply: ", "")
+            counter+=1
+        except:
+            pass
 driver.quit()
 
